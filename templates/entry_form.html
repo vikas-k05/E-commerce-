@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Mobile Form
+{% endblock title%}
+
+{% block body %}
+
+<div class='container' style='margin-top:20px;'>
+
+
+    {% comment %} <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" name='phone'id="phone" placeholder="9877546544">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="brand">brand</label>
+            <input type="text" class="form-control" name='brand' id="brand" placeholder="brand">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ram">RAM</label>
+          <input type="text" class="form-control" name='ram'id="ram" placeholder="gb">
+        </div>
+        <div class="form-group">
+          <label for="color">color</label>
+          <input type="text" class="form-control" id="color" name='color' placeholder="color">
+        </div>
+        <div class="form-group">
+            <label for="tag">Tag</label>
+            <input type="text" class="form-control" id="tag" name='tag' placeholder="tag">
+          </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" id="date" name='date'>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="image">Image</label>
+            <input type="file" class="form-control" id="image" name='image'>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form> {% endcomment %}
+
+
+  
+
+<form method="post" action=""  enctype="multipart/form-data">
+    {% csrf_token %}
+
+     <div class='row'>
+      <div class=col-md-1>
+           <label for='phone'>Phone</label>
+      </div>
+      <div class=col-md-5>
+         {{form.phone}}
+      </div>
+      <div class=col-md-1>
+           <label for='color'>color</label>
+      </div>
+      <div class=col-md-5>
+          {{form.color}}
+      </div>
+  </div>
+
+
+  <div class='row'>
+    <div class='col-md-1'>
+    <label for='brand'>brand</label>
+    </div>
+    <div class='col-md-5'>
+    {{form.brand}}
+    </div>
+    <div class='col-md-1'>
+    <label for='ram'>ram</label>
+    </div>
+    <div class='col-md-5'>
+    {{form.ram}}
+    </div>
+  </div>
+
+
+  <div class='row'>
+    <div class='col-md-1'>
+        <label for='date'>date</label>
+    </div>
+    <div class='col-md-5'>
+    {{form.date}}
+    <label for='price'>price</label>
+    {{form.price}}
+
+    <label for='Image'>Image</label>
+     {{form.image}}
+
+
+    <label for="tag">tag</label>
+   {{form.tags}}  
+    <button type='submit' value='submit'>Submit</button>
+</form>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $('#id_tags').select2();
+});
+</script>
+{% endblock body%}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+About
+{% endblock title %}
+
+{% block body %}
+<div class='container' style='margin-top:20px;'>
+  {% if messages %}
+	{% for message in messages %}
+	<div class="alert alert-success" role="alert">
+		{{ message }}
+	</div>
+	{% endfor %}
+	{% endif %}
+    {% comment %} <a href="{% url 'phone_entry_form' %}" class="btn btn-danger">Add a New</a> {% endcomment %}
+<h3 style='background:red;text-align:center;'>Product listing</h3>
+<h3 style='background:red;text-align:center;'>
+  {% if customer %}
+  {{customer.name}}
+  {% endif %}
+
+</h3>
+
+    {% for details in detail %}
+    <div class="row">
+        <div class='column'>
+            <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{details.image.url}}" alt="Card image cap"> 
+    <p style="font-size:48px">
+       &#128516; &#128525; &#128151;
+      </p>
+       </div>
+    </div>
+
+    <div class="column">
+        <div class="card" style="width: 40rem;">
+        <div class="card-body">
+      <h5 class="card-title"> {{details.phone}}</h5><h3> {{details.id}}</h3>
+      <p class="card-text">{{details.color}}</p>
+      <p class="card-text">{{details.brand}}</p>
+      <p class="card-text">{{details.ram}}</p>
+      <a href="{% url 'add_to_cart' %}" class="btn btn-warning">Add to Cart</a></button>
+      <a href="{% url 'mobile_details' details.id %}" class="btn btn-primary">Detail View</a>   
+       
+        
+
+
+      <button>{{details.tags}}</button>
+      {% comment %} Admin can edit or delete any item  {% endcomment %}
+      {% comment %} <a href="#" class="btn btn-success">Edit</a>
+      <a href="{% url 'delete' details.id %}" class="btn btn-danger">Delete</a> {% endcomment %}
+        </div>
+        </div>
+</div>
+    
+</div>
+  
+  {% endfor %}
+</div>
+{% endblock body%} \
+
